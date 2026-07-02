@@ -1,0 +1,6 @@
+C:\Users\anton\Desktop\gamedeck\gamedeck\target\debug\deps\percent_encoding-cbce7b450fc3da07.d: C:\Users\anton\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\percent-encoding-2.3.2\src\lib.rs C:\Users\anton\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\percent-encoding-2.3.2\src\ascii_set.rs
+
+C:\Users\anton\Desktop\gamedeck\gamedeck\target\debug\deps\libpercent_encoding-cbce7b450fc3da07.rmeta: C:\Users\anton\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\percent-encoding-2.3.2\src\lib.rs C:\Users\anton\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\percent-encoding-2.3.2\src\ascii_set.rs
+
+C:\Users\anton\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\percent-encoding-2.3.2\src\lib.rs:
+C:\Users\anton\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\percent-encoding-2.3.2\src\ascii_set.rs:
