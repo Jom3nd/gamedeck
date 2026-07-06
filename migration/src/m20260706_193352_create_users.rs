@@ -54,6 +54,7 @@ impl MigrationTrait for Migration {
 enum Post {
     Table,
     Id,
-    Title,
-    Text,
+    Username,
+    Email,
+    Password
 }
