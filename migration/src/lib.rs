@@ -6,3 +6,4 @@ mod m20260706_193352_create_users;
 mod m20260706_195321_create_games;
 mod m20260708_165236_create_genres;
 mod m20260708_171133_create_game_plataforms;
+mod m20260708_175536_create_review;
