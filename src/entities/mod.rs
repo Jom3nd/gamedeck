@@ -1,6 +1,6 @@
 pub mod game;
 pub mod game_genres;
-pub mod game_plataforms;
+pub mod game_platforms;
 pub mod genres;
 pub mod library;
 pub mod plataforms;

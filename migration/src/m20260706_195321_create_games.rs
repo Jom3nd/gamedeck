@@ -16,7 +16,6 @@ impl MigrationTrait for Migration {
                         .uuid()
                         .not_null()
                         .primary_key()
-                        .unique_key(),
                     )
                     .col(
                         ColumnDef::new(Game::Title)
@@ -35,12 +34,12 @@ impl MigrationTrait for Migration {
                     )
                     .col(
                         ColumnDef::new(Game::Price)
-                        .decimal()
+                        .decimal_len(10,2)
                         .not_null(),
                     )
                     .col(
-                        ColumnDef::new(Game::Genre)
-                        .string()
+                        ColumnDef::new(Game::GenreId)
+                        .uuid()
                         .not_null(),
                     )
                     .col(
@@ -57,6 +56,19 @@ impl MigrationTrait for Migration {
                         ColumnDef::new(Game::UpdatedAt)
                         .timestamp_with_time_zone()
                         .not_null(),
+                    )
+                    .col(
+                        ColumnDef::new(Game::GameUrl)
+                        .null()
+                        .string(),
+                    )
+                    .foreign_key(
+                        ForeignKey::create()
+                        .name("fk-game-genre")
+                        .from(Game::Table, Game::GenreId)
+                        .to(Genre::Table , Genre::Id)
+                        .on_delete(ForeignKeyAction::Restrict)
+                        .on_update(ForeignKeyAction::Cascade)
                     )
                     .to_owned(),
             )
@@ -78,7 +90,10 @@ enum Game {
     Title,
     Description,
     Developer,
+    Price,
+    GenreId,
     ReleaseDate,
     CreatedAt,
     UpdatedAt,
+    GameUrl
 }
