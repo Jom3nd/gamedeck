@@ -64,7 +64,7 @@ impl MigrationTrait for Migration {
                     )
                     .foreign_key(
                         ForeignKey::create()
-                        .name("fk-game-genre")
+                        .name("fk_game_genre")
                         .from(Game::Table, Game::GenreId)
                         .to(Genre::Table , Genre::Id)
                         .on_delete(ForeignKeyAction::Restrict)

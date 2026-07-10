@@ -31,7 +31,7 @@ impl MigrationTrait for Migration {
                     .col(
                         ColumnDef::new(Review::Score)
                         .small_integer()
-                        .not_null(),
+                        .not_null()
                     )
                     .col(
                         ColumnDef::new(Review::Title)
@@ -44,16 +44,18 @@ impl MigrationTrait for Migration {
                     .col(
                         ColumnDef::new(Review::CreatedAt)
                         .timestamp_with_time_zone()
-                        .not_null(),
+                        .not_null()
+                        .default(Expr::current_timestamp()),
                     )
                     .col(
                         ColumnDef::new(Review::UpdatedAt)
                         .timestamp_with_time_zone()
-                        .not_null(),
+                        .not_null()
+                        .default(Expr::current_timestamp()),
                     )
                     .foreign_key(
                         ForeignKey::create()
-                        .name("fk-review-user")
+                        .name("fk_review_user")
                         .from(Review::Table, Review::UserId)
                         .to(User::Table, User::Id)
                         .on_delete(ForeignKeyAction::Cascade)
@@ -62,7 +64,7 @@ impl MigrationTrait for Migration {
                     )
                     .foreign_key(
                         ForeignKey::create()
-                        .name("fk-review-game")
+                        .name("fk_review_game")
                         .from(Review::Table, Review::GameId)
                         .to(Game::Table, Game::Id)
                         .on_delete(ForeignKeyAction::Cascade)
@@ -74,7 +76,7 @@ impl MigrationTrait for Migration {
         manager
             .create_index(
                 Index::create()
-                    .name("idx-review-user-game")
+                    .name("idx_review_user_game")
                     .table(Review::Table)
                     .col(Review::UserId)
                     .col(Review::GameId)
@@ -86,7 +88,7 @@ impl MigrationTrait for Migration {
         manager
             .create_index(
                 Index::create()
-                    .name("idx-review-game")
+                    .name("idx_review_game")
                     .table(Review::Table)
                     .col(Review::GameId)
                     .to_owned(),
@@ -95,7 +97,7 @@ impl MigrationTrait for Migration {
         manager
             .create_index(
                 Index::create()
-                    .name("idx-review-user")
+                    .name("idx_review_user")
                     .table(Review::Table)
                     .col(Review::UserId)
                     .to_owned(),
@@ -114,7 +116,7 @@ impl MigrationTrait for Migration {
         manager
             .drop_index(
                 Index::drop()
-                    .name("idx-review-user")
+                    .name("idx_review_user")
                     .table(Review::Table)
                     .to_owned(),
             )   
@@ -123,7 +125,7 @@ impl MigrationTrait for Migration {
         manager
             .drop_index(
                 Index::drop()
-                    .name("idx-review-game")
+                    .name("idx_review_game")
                     .table(Review::Table)
                     .to_owned(),
             )
@@ -132,7 +134,7 @@ impl MigrationTrait for Migration {
         manager
             .drop_index(
                 Index::drop()
-                    .name("idx-review-user-game")
+                    .name("idx_review_user_game")
                     .table(Review::Table)
                     .to_owned(),
             )
