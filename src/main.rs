@@ -1,8 +1,8 @@
 use tokio::net::TcpListener;
 use sea_orm::DatabaseConnection;
-use crate::app::create_router;
-use crate::config::database::connect_database;
-use crate::state::app_state::AppState;
+use gamedeck::app::create_router;
+use gamedeck::config::database::connect_database;
+use gamedeck::app_state::AppState;
 
 
 #[tokio::main]
