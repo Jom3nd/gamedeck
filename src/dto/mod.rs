@@ -1,6 +1,6 @@
-pub mod Game;
-pub mod Genre;
-pub mod Library;
-pub mod User;
-pub mod Review;
-pub mod Platform;
+pub mod game;
+pub mod genre;
+pub mod library;
+pub mod user;
+pub mod review;
+pub mod platform;
