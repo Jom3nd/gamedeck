@@ -1,5 +1,10 @@
 pub mod auth_routes;
+pub mod game_genres_routes;
+pub mod game_platforms_routes;
 pub mod game_routes;
+pub mod genres_routes;
 pub mod library_routes;
+pub mod platform_routes;
+pub mod refresh_token_routes;
 pub mod review_routes;
 pub mod user_routes;
