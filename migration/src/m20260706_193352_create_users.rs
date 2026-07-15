@@ -7,32 +7,42 @@ pub struct Migration;
 impl MigrationTrait for Migration {
     async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         // Replace the sample below with your own migration scripts
-        todo!();
 
         manager
             .create_table(
-                Table::create()
+                Table::create().table(User::Table).if_not_exists()
                     .col(
-                        ColumnDef::new(user::Id)
-                        .uuif()
+                        ColumnDef::new(User::Id)
+                        .uuid()
                         .not_null()
-                        .primary_key(),
+                        .primary_key()
                     )
                     .col(
-                        ColumnDef::new(user::Username)
+                        ColumnDef::new(User::Username)
+                        .string()
+                        .not_null()
+                        .unique_key(),
+                    )
+                    .col(
+                        ColumnDef::new(User::Email)
+                        .string()
+                        .not_null()
+                        .unique_key(),
+                    )
+                    .col(
+                        ColumnDef::new(User::Password)
                         .string()
                         .not_null(),
                     )
                     .col(
-                        ColumnDef::new(user::Email)
-                        .string()
-                        .not_null()
-                        .unique_key()
+                        ColumnDef::new(User::CreatedAt)
+                        .timestamp_with_time_zone()
+                        .not_null(),
                     )
                     .col(
-                        ColumnDef::new(user::Password)
-                        .string()
-                        .not_null()
+                        ColumnDef::new(User::UpdatedAt)
+                        .timestamp_with_time_zone()
+                        .not_null(),
                     )
                     .to_owned(),  
             )
@@ -42,19 +52,20 @@ impl MigrationTrait for Migration {
 
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         // Replace the sample below with your own migration scripts
-        todo!();
 
         manager
-            .drop_table(Table::drop().table(Post::Table).to_owned())
+            .drop_table(Table::drop().table(User::Table).to_owned())
             .await
     }
 }
 
 #[derive(DeriveIden)]
-enum Post {
+enum User {
     Table,
     Id,
     Username,
     Email,
-    Password
+    Password,
+    CreatedAt,
+    UpdatedAt
 }
