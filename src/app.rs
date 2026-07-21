@@ -2,16 +2,16 @@ use axum::Router;
 use crate::{
     app_state::AppState,
     routes::{
-        auth_routes::auth_routes,
-        game_genres_routes::game_genres_routes,
-        game_platform_routes::game_platform_routes,
-        game_routes::game_routes,
-        genres_routes::genres_routes,
-        library_routes::library_routes,
-        platform_routes::platform_routes,
-        refresh_token_routes::refresh_token_routes,
-        review_routes::review_routes,
-        user_routes::user_routes,
+        auth_routes,
+        game_genres_routes,
+        game_platforms_routes,
+        game_routes,
+        genres_routes,
+        library_routes,
+        platform_routes,
+        refresh_token_routes,
+        review_routes,
+        user_routes
     },
 };
 
@@ -27,5 +27,7 @@ pub fn create_router(state:AppState) -> Router {
         .merge(refresh_token_routes())
         .merge(review_routes())
         .merge(user_routes())
-        .with_state(state)
+        .with_state(state);
+
+        Ok(Router::new())
     }
