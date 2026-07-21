@@ -9,14 +9,6 @@ use sea_orm::{
 use crate::entities::{game,genre,game_genre};
 use uuid::Uuid;
 use chrono::Utc;
-use crate::{
-    dto::game::{
-        create_game_dto::CreateGameDto,
-        game_response_dto::GameResponseDto,
-        update_game_dto::UpdateGameDto,
-    },
-    errors::api_erro::ApiError,
-};
 
 pub struct GameService;
 
@@ -91,9 +83,6 @@ impl GameService{
             release_date: game.release_date,
             game_url: game.game_url,
             genres: dto.genres,
-    })
-
-
+        })
     }
-
 }
